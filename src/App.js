@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import IdCard from "./components/IdCard"
+import Greetings from "./components/Greetings"
 
-function App() {
-  return (
+class App extends Component {
+
+  state={
+    lastName:'Doe',
+    firstName:'John',
+    gender:'male',
+    height:178,
+    birth:"1992-07-14",
+    picture:"https://randomuser.me/api/portraits/men/44.jpg"
+  }
+
+  render (){ return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <IdCard 
+      firstName={this.state.firstName}
+      lastName={this.state.lastName}
+      gender={this.state.gender}
+      height={this.state.height}
+      birth={this.state.birth}
+      imageURL={this.state.picture}
+      />
+      <Greetings lang="es" firstName={this.state.firstName}/>
+    </div>)
+ 
 }
-
+}
 export default App;
